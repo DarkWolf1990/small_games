@@ -1,13 +1,13 @@
 import random
 from config import WORDS_PATH, HISTORY_PATH
 
-def get_word_from_file():
+def get_word_from_file(path):
     """
     Получаем все слова из файла спискам
     :return:
     """
 
-    with open(WORDS_PATH, 'r', encoding='utf-8' ) as file:
+    with open(path, 'r', encoding='utf-8' ) as file:
         lines = file.read()
         words =lines.splitlines()
 
@@ -25,12 +25,12 @@ def shuffle_word(word):
     return ''.join(word_as_list)
 
 
-def save_player_score(player_name, player_score):
-      with open(HISTORY_PATH, 'a', encoding='utf-8') as fp:
+def save_player_score(path,player_name, player_score):
+      with open(path, 'a', encoding='utf-8') as fp:
         fp.write(f"{player_name} {player_score}\n")
 
 
-def get_statistics_from_file():
+def get_statistics_from_file(path):
     scores = []
     with open(HISTORY_PATH, 'r', encoding='utf-8') as fp:
         for line in fp:
